@@ -1,0 +1,14 @@
+# For gradle users
+
+### Java ###
+.class
+build.gradle
+*.war
+*.jar
+*.ear
+
+### Gradle ###
+.gradle
+/build/
+
+gradle-app.setting
