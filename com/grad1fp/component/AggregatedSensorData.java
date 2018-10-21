@@ -15,7 +15,7 @@ import java.util.Map;
 public interface AggregatedSensorData {
   /**
 	* getAllSensorData is a method to fetch the current values at each sensor
-  *
+ 	*
 	* @param portsAndSensors - a {@link java.util.Map} of the active ports (int) and their corresponding SensorTypes ( i.e. Light, Temperature)
 	* @return Map - The SensorType and their corresponding readout values
 	*/
