@@ -12,5 +12,5 @@ public enum SensorType {
   ROTARY, //Grove - Rotary angle sensor
   TEMP_HUMID, //Grove - Temperature and humidity sensor
   RANGER, //Grove - Ultrasonic ranger
-  RELAY, //Grove - Relay
+  RELAY //Grove - Relay
 }
