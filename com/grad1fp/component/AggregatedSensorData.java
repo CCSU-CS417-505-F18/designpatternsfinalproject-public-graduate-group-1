@@ -13,10 +13,10 @@ import java.util.Map;
  */
 
 public interface AggregatedSensorData {
-	 /**
-     * 
-     * @param Map - The active ports (int) and their corresponding SensorTypes ( i.e. Light, Temperature)
-	 * @return Map - The SensorType and their corresponding readout values
-     */
+	/**
+	* 
+	* @param Map - The active ports (int) and their corresponding SensorTypes ( i.e. Light, Temperature)
+	* @return Map - The SensorType and their corresponding readout values
+	*/
 	Map<String,Number> getAllSensorData(Map<int, SensorType>);
 }
