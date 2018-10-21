@@ -1,4 +1,4 @@
-package com.grad1fp.component;
+package cs505.grad1.sensoragg;
 
 public enum SensorType {
   BUTTON, //Grove - Button
