@@ -1,7 +1,6 @@
 package com.grad1fp.component;
 
-include java.util.Map;
-include com.grad1fp.SensorType;
+import java.util.Map;
 
 public interface AggregatedSensorData {
   Map<String,Number> getAllSensorData(Map<int, SensorType>);
