@@ -12,3 +12,7 @@ build.gradle
 /build/
 
 gradle-app.setting
+
+### Eclipse ###
+.classpath
+.project
