@@ -19,5 +19,7 @@ public interface AggregatedSensorData {
 	* @param portsAndSensors a {@link java.util.Map} of the active ports (Integer) and their corresponding SensorTypes ( i.e. Light, Temperature)
 	* @return a {@link java.util.Map} of every active port's description (e.g. "Light", "Temperature") and corresponding readout value.
 	*/
-  Map<String, Number> getAllSensorData(Map<Integer, SensorType> portsAndSensors);
+    public Map<String, Double> getAllSensorData(); //returns a map of all sensors and values
+    public double getSensorData(SensorType type); // returns value of first sensor of requested type
+    public double getSensorData(int port, SensorType type); // returns value of sensor of requested type at port
 }
