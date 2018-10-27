@@ -1,7 +1,9 @@
-# For gradle users 
+# For gradle users
+
+
 
 ### Java ###
-.class
+*.class
 build.gradle
 *.war
 *.jar
