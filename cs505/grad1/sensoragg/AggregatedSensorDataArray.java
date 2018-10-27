@@ -4,11 +4,11 @@ import java.util.Map;
 
 //Array implementation of aggregated data interface
 class AggregatedSensorDataArray implements AggregatedSensorData {
-	
+
 	SensorData[] data;
-	
+
 	@Override
-	public Map<String, Number> getAllSensorData() {
+	public Map<String, Double> getAllSensorData() {
 		//TODO Generate map from data array
 		return null;
 	}
