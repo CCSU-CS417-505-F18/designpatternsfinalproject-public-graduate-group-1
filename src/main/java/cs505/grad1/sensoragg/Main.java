@@ -16,9 +16,9 @@ public class Main {
     led.set(true);
     Thread.sleep(1000);
     led.set(false);
-    SensorAggregator sag = new SensorAggregator(grovePi);
+    Grad1Component sag = new Grad1Component(grovePi);
     sag.addSensor(3, SensorType.BLUE_LED).addSensor(4, SensorType.RED_LED);
-    System.out.println(sag.getAllSensorData().toString());
+    System.out.println(sag.getAllSensorData());
     System.exit(0);
   }
 
