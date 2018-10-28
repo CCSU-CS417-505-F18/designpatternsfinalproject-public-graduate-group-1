@@ -5,5 +5,4 @@ class SensorData {
 	public SensorType type;
 	public int port;
 	public double value;
-
 }
