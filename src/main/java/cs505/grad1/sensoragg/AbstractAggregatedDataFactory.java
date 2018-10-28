@@ -6,6 +6,6 @@ interface AbstractAggregatedDataFactory {
 
 	//generates data based on map of ports and sensor types
 	//concrete factory will implement GrovePi APIs to access appropriate sensors
-	AggregatedSensorData MakeAggregatedData(Map<Integer, SensorType> sensors);
-	
+	AggregatedSensorData makeAggregatedData(Map<Integer, SensorType> sensors);
+
 }
