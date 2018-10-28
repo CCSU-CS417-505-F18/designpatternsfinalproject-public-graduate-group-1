@@ -12,11 +12,13 @@ public class Main {
     GrovePi grovePi = new GrovePi4J();
     //your stuff here
     int pin = 4;
-    org.iot.raspberry.grovepi.devices.GroveLed led = new GroveLed(grovePi, pin);
+    GroveLed led = new GroveLed(grovePi, pin);
     led.set(true);
     Thread.sleep(1000);
     led.set(false);
-    //end program forcefully
+    SensorAggregator sag = new SensorAggregator(grovePi);
+    sag.addSensor(3, SensorType.BLUE_LED).addSensor(4, SensorType.RED_LED);
+    System.out.println(sag.getAllSensorData().toString());
     System.exit(0);
   }
 

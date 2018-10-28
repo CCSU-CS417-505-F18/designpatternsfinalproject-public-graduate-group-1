@@ -1,16 +1,21 @@
 package cs505.grad1.sensoragg;
 
 import java.util.Map;
+import java.util.HashMap;
 
 //Array implementation of aggregated data interface
 class AggregatedSensorDataArray implements AggregatedSensorData {
 
-	SensorData[] data;
+	private int size = 0;
+	SensorData[] data = new SensorData[size];
 
 	@Override
 	public Map<String, Double> getAllSensorData() {
-		//TODO Generate map from data array
-		return null;
+		Map<String, Double> map = new HashMap<>();
+		for (int i = 0; i < data.length; i++) {
+			map.put(data[i].type.toString() + data[i].port, data[i].value);
+		}
+		return map;
 	}
 
 	@Override
@@ -31,6 +36,11 @@ class AggregatedSensorDataArray implements AggregatedSensorData {
 			}
 		}
 		return -999; //TODO should throw exception if no sensor of type
+	}
+
+	public void addSensor(SensorData sd) {
+		data[size] = sd;
+		size++;
 	}
 
 }

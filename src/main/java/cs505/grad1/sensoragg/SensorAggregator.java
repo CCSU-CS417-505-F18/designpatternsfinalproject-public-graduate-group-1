@@ -16,8 +16,9 @@ public class SensorAggregator {
 
 	//allows users to collect sensors in one place, can then use getAllSensorData()
 	//to make repeated calls without sending ports/sensors each time
-	public void addSensor(int port, SensorType type) {
+	public SensorAggregator addSensor(int port, SensorType type) {
 		sensors.put(port, type);
+		return this;
 	}
 
 	public AggregatedSensorData getAllSensorData() {
