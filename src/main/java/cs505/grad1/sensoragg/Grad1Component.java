@@ -21,7 +21,7 @@ public class Grad1Component {
 		return this;
 	}
 
-	public Map<String, SensorData> getAllSensorData() {
+	public Map<Integer, SensorData> getAllSensorData() {
 		return factory.makeAggregatedData(sensors);
 	}
 

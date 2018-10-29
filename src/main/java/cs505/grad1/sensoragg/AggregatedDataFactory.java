@@ -22,9 +22,8 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
         // template patter here.
         try {
           sd.value = (Number) this.getClass().getDeclaredMethod(v.getInputMethod(), int.class).invoke(this, k);
-
         } catch (Exception e) {}
-        sagHash.put(v.name(), sd);
+        sagHash.put(k, sd);
       });
       return sagHash;
   }
@@ -33,7 +32,5 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
     try {
       return grovePi.getDigitalIn(port).get() ? 1 : 0;
     } catch (Exception e) {return -999;}
-
   }
-
 }
