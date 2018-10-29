@@ -27,3 +27,7 @@ gradle-app.setting
 ### Eclipse ###
 .classpath
 .project
+
+### IntelliJ ###
+.idea/
+*.iml
