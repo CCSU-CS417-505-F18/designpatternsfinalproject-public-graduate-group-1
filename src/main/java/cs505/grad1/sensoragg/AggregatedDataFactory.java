@@ -67,4 +67,5 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
 	if (other.grovePi == this.grovePi && other.hashCode() == this.hashCode()) return true;
 	else
 		return false;
+  }
 }
