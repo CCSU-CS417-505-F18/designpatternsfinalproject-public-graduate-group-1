@@ -16,4 +16,20 @@ public class LightSensorStrategy implements SensorStrategy {
         }
         return sensor.get();
     }
+
+    //Well behaved methods
+    @Override
+    public String toString(){
+        return "Light Sensor Strategy" ;
+    }
+    @Override
+    public int hashCode(){
+        return 1;
+    }
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || !(other instanceof AggregatedDataFactory)) return false;
+        if (other == this) return true;
+        return false;
+    }
 }
