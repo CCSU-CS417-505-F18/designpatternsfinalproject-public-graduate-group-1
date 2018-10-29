@@ -33,4 +33,22 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
       return grovePi.getDigitalIn(port).get() ? 1 : 0;
     } catch (Exception e) {return -999;}
   }
+  //Well behaved methods
+  @Override
+  public String toString(){
+	  return "AggregatedDataFactory";
+  }
+  @Override
+  public int hashCode(){
+	  int hash = 0;
+	  has += grovePi;
+	  return hash;
+  }
+  @Override
+  public boolean equals(Object other){
+	if (other == null || !(other instanceof AggregatedDataFactory)) return false;
+	if (other == this) return true;
+	if (other.grovePi == this.grovePi && other.hashCode() == this.hashCode()) return true;
+	else
+		return false;
 }
