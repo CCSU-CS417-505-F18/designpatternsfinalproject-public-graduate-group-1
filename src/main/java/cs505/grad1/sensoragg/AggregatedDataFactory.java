@@ -19,11 +19,21 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
         SensorData sd = new SensorData();
         sd.type = v;
         sd.port = k;
-        sd.value = 0.5;
+        // template patter here.
+        try {
+          sd.value = (Number) this.getClass().getDeclaredMethod(v.getInputMethod(), int.class).invoke(this, k);
+
+        } catch (Exception e) {}
         sagHash.put(v.name(), sd);
       });
       return sagHash;
   }
 
+  protected Number digital(int port) {
+    try {
+      return grovePi.getDigitalIn(port).get() ? 1 : 0;
+    } catch (Exception e) {return -999;}
+
+  }
 
 }
