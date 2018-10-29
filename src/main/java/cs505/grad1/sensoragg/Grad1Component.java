@@ -25,4 +25,49 @@ public class Grad1Component {
 		return factory.makeAggregatedData(sensors);
 	}
 
+	//WELL-BEHAVED METHODS
+	@Override
+	public String toString(){
+		String s = "Graduate 1 Component: ";
+		if (sensors.isEmpty()){
+			s += "Uninitialized";
+		}
+		else
+		{
+			s += "Sensors at ports ";
+			for (Integer key : sensors.keySet())
+			{
+				s += key.toString() + " ";
+			}
+		}
+		return s;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		if (!sensors.isEmpty())
+		{
+			for (Integer key : sensors.keySet())
+			{
+				hash += key;
+			}
+		}
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object other)
+	{
+		if (other == null || !(other instanceof Grad1Component)) return false;
+		if (other == this) return true;
+
+		Grad1Component gOther = (Grad1Component)other;
+		if ((!gOther.toString().equals(toString())))
+		{
+			return false;
+		}
+		return true;
+	}
+
 }
