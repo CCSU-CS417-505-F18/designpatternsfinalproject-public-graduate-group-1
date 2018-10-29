@@ -1,6 +1,17 @@
 package cs505.grad1.sensoragg;
 
-class SensorData {
+/**
+ * SensorData is an object that collects the pertinent
+ * data from one port on the GrovePi. It is created by the
+ * Grad1Component and can then be accessed by outside systems.
+ *
+ * @version 1.0.0
+ * @author Colin Kelly
+ * @author Ben Marshalkowski
+ * @author Kathleen McKay
+ * @author Phil Murray
+ */
+public class SensorData {
 
 	public SensorType type;
 	public int port;

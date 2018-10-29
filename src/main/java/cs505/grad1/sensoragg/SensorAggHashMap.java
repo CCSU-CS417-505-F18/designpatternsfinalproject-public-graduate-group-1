@@ -3,6 +3,18 @@ package cs505.grad1.sensoragg;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * SensorAggHashMap is a map implementation to gather and relay
+ * sensor data. Each key represents a connected port, and the
+ * value is the associated SensorData. Functionality is as a normal
+ * Map in Java.
+ *
+ * @version 1.0.0
+ * @author Colin Kelly
+ * @author Ben Marshalkowski
+ * @author Kathleen McKay
+ * @author Phil Murray
+ */
 public class SensorAggHashMap extends HashMap<Integer, SensorData> {
 
     //WELL-BEHAVED METHODS
