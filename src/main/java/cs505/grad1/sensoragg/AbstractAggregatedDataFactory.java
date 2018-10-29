@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * AbstractAggregatedDataFactory is an interface for factories that will be used
  * by SensorAggHashMap. The concrete factory
- * will implement GrovePi APIs to access appropriate sensors.
+ * will implement GrovePi APIs to access appropriate sensors
  *
  * @version 1.0.0
  * @author Colin Kelly
