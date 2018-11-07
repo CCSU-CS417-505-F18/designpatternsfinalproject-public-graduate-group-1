@@ -70,14 +70,14 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
   @Override
   public int hashCode(){
 	  int hash = 0;
-	  has += grovePi;
+	  hash += grovePi.hashCode();
 	  return hash;
   }
   @Override
   public boolean equals(Object other) {
       if (other == null || !(other instanceof AggregatedDataFactory)) return false;
       if (other == this) return true;
-      if (other.grovePi == this.grovePi && other.hashCode() == this.hashCode()) return true;
+      if (other.hashCode() == this.hashCode()) return true;
       else
           return false;
   }
