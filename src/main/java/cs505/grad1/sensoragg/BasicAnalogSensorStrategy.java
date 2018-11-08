@@ -27,7 +27,7 @@ public class BasicAnalogSensorStrategy implements SensorStrategy {
     }
 
     @Override
-    public double GetSensorData(GrovePi grovePi, int port) throws IOException
+    public double getSensorData(GrovePi grovePi, int port) throws IOException
     {
         try {
             return sensor.get();

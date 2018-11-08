@@ -8,7 +8,7 @@ import java.io.IOException;
 public class TemperatureSensorStrategy implements SensorStrategy {
 
     @Override
-    public double GetSensorData(GrovePi grovePi, int port) throws IOException {
+    public double getSensorData(GrovePi grovePi, int port) throws IOException {
         GroveTemperatureAndHumiditySensor sensor;
         try {
             sensor = new GroveTemperatureAndHumiditySensor(grovePi, port - Grad1Component.digitalOffset, GroveTemperatureAndHumiditySensor.Type.DHT11);

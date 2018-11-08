@@ -8,7 +8,7 @@ import java.io.IOException;
 public class UltrasonicRangerSensorStrategy implements SensorStrategy {
 
     @Override
-    public double GetSensorData(GrovePi grovePi, int port) throws IOException {
+    public double getSensorData(GrovePi grovePi, int port) throws IOException {
         GroveUltrasonicRanger sensor;
         try {
             sensor = new GroveUltrasonicRanger(grovePi, port - Grad1Component.digitalOffset);
