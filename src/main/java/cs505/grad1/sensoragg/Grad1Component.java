@@ -19,6 +19,10 @@ public class Grad1Component {
 	private Map<Integer, SensorType> sensors = new HashMap<Integer, SensorType>();
 	private AbstractAggregatedDataFactory factory;
 
+	//sensor port offsets to avoid HashMap collisions
+	static final int digitalOffset = 32;
+    static final int secondarySensorOffset = 16;
+
 	Grad1Component(GrovePi grovePi) {
 		factory = new AggregatedDataFactory(grovePi);
 	}
@@ -33,6 +37,16 @@ public class Grad1Component {
 	 * sensor at the specified port
 	 */
 	public Grad1Component addSensor(int port, SensorType type) {
+		//apply offset for digital sensors
+		if (type == SensorType.HUMID || type == SensorType.TEMP || type == SensorType.RANGER)
+		{
+			port += digitalOffset;
+		}
+		//apply offset for secondary value of common port
+		if (type == SensorType.HUMID)
+		{
+			port += secondarySensorOffset;
+		}
 		sensors.put(port, type);
 		return this;
 	}

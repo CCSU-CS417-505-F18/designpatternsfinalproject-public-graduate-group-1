@@ -11,7 +11,7 @@ public class UltrasonicRangerSensorStrategy implements SensorStrategy {
     public double GetSensorData(GrovePi grovePi, int port) throws IOException {
         GroveUltrasonicRanger sensor;
         try {
-            sensor = new GroveUltrasonicRanger(grovePi, port);
+            sensor = new GroveUltrasonicRanger(grovePi, port - Grad1Component.digitalOffset);
             return sensor.get();
         } catch (IOException e) {
             throw e;

@@ -18,7 +18,6 @@ import java.util.Map;
 public class SensorAggHashMap extends HashMap<Integer, SensorData> {
 
     //WELL-BEHAVED METHODS
-
     public String toString() {
         String str = "";
         for (Map.Entry<Integer, SensorData> entry : this.entrySet()) {

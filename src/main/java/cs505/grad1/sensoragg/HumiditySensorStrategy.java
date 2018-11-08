@@ -11,12 +11,11 @@ public class HumiditySensorStrategy implements SensorStrategy {
     public double GetSensorData(GrovePi grovePi, int port) throws IOException {
         GroveTemperatureAndHumiditySensor sensor;
         try {
-            sensor = new GroveTemperatureAndHumiditySensor(grovePi, port, GroveTemperatureAndHumiditySensor.Type.DHT11);
+            sensor = new GroveTemperatureAndHumiditySensor(grovePi, port - Grad1Component.digitalOffset - Grad1Component.secondarySensorOffset, GroveTemperatureAndHumiditySensor.Type.DHT11);
             return sensor.get().getHumidity();
         } catch (IOException e) {
             throw e;
         }
-
     }
 
     //Well behaved methods
