@@ -1,25 +1,18 @@
 package cs505.grad1.sensoragg;
 
-import org.iot.raspberry.grovepi.devices.GroveLightSensor;
+import org.iot.raspberry.grovepi.devices.GroveRotarySensor;
 import org.iot.raspberry.grovepi.GrovePi;
 
 import java.io.IOException;
 
-/**
- * makeAggregatedData will return a Map object based on the sensors provided
- * by the user.  It will display the ports and the values provided by the sensors.
- *
- * @param sensors is the Map oject that stores the user inputted sensor data
- * @return SensorAggHashMap is the Map object of the provided sensors with their values
- */
-public class LightSensorStrategy implements SensorStrategy {
+public class RotaryAngleSensorStrategy implements SensorStrategy {
 
     @Override
     public double GetSensorData(GrovePi grovePi, int port) throws IOException {
-        GroveLightSensor sensor;
+        GroveRotarySensor sensor;
         try {
-            sensor = new GroveLightSensor(grovePi, port);
-            return sensor.get();
+            sensor = new GroveRotarySensor(grovePi, port);
+            return sensor.get().getDegrees();
         } catch (IOException e) {
             throw e;
         }
@@ -28,7 +21,7 @@ public class LightSensorStrategy implements SensorStrategy {
     //Well behaved methods
     @Override
     public String toString(){
-        return "Light Sensor Strategy" ;
+        return "Rotary Angle Sensor Strategy";
     }
     @Override
     public int hashCode(){

@@ -1,26 +1,28 @@
 package cs505.grad1.sensoragg;
 
+/**
+ * The SensorType enum provides a list of the available
+ * sensors which can be aggregated.
+ *
+ * @version 1.0.0
+ * @author Colin Kelly
+ * @author Ben Marshalkowski
+ * @author Kathleen McKay
+ * @author Phil Murray
+ */
 public enum SensorType {
-  //BUTTON("digital"), //Grove - Button
-  LIGHT_SENSOR("analog")//, //Grove - Light sensor
-  //BUZZER("digital"), //Grove - Buzzer
-  //SOUND("analog"), //Grove - Sound sensor
-  //LED("digital"), //Grove - Red LED
-  //BACKLIGHT("analog"); //Grove - LCD RGB Backlight
-  // ROTARY, //Grove - Rotary angle sensor
-  // TEMP_HUMID, //Grove - Temperature and humidity sensor
-  // RANGER, //Grove - Ultrasonic ranger
-  // RELAY //Grove - Relay
+  LIGHT("Light"), //Grove - Light sensor
+  SOUND("Sound"), // Grove - Sound Sensor
+  ROTARY("Rotary Angle"), //Grove - Rotary angle sensor
+  TEMP("Temperature"), // Grove - Temperature Sensor
+  HUMID("Humidity"), //Grove - Humidity Sensor
+  RANGER("Ultrasonic Ranger"), //Grove - Ultrasonic Ranger Sensor (digital port)
   ;
-  private String inputMethod;
-
-  public String getInputMethod() {
-    return this.inputMethod;
+  private final String name;
+  public String toString() {
+    return name;
   }
-
-  private SensorType(String inputMethod) {
-    this.inputMethod = inputMethod;
+  private SensorType(String name) {
+    this.name = name;
   }
-
-
 }

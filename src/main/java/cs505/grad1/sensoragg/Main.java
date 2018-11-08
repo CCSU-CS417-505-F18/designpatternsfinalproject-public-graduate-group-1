@@ -1,7 +1,5 @@
 package cs505.grad1.sensoragg;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.iot.raspberry.grovepi.GrovePi;
 import org.iot.raspberry.grovepi.devices.GroveLed;
 import org.iot.raspberry.grovepi.pi4j.GrovePi4J;
@@ -17,7 +15,7 @@ public class Main {
     Thread.sleep(1000);
     led.set(false);
     Grad1Component sag = new Grad1Component(grovePi);
-    sag.addSensor(3, SensorType.LIGHT_SENSOR).addSensor(4, SensorType.LIGHT_SENSOR);
+    sag.addSensor(3, SensorType.LIGHT).addSensor(4, SensorType.LIGHT);
     System.out.println(sag.getAllSensorData());
     System.exit(0);
   }
