@@ -26,23 +26,22 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
   }
 
 /**
- * makeAggregatedData will return a Map object based on the sensors provided
+ * makeAggregatedData will return a SensorAggHashMap object based on the sensors provided
  * by the user.  It will display the ports and the values provided by the sensors.
  *
  * @param sensors is the Map oject that stores the user inputted sensor data
- * @return SensorAggHashMap is the Map object of the provided sensors with their values 
+ * @return SensorAggHashMap is the Map object of the provided sensors with their values
  */
   public SensorAggHashMap makeAggregatedData(Map<Integer, SensorType> sensors) {
       SensorAggHashMap sagHash = new SensorAggHashMap();
       sensors.forEach((k, v) -> {
-        SensorData sd = new SensorData();
-        sd.type = v;
-        sd.port = k;
+        SensorData sd = new SensorData(v, k);
+
         // explicit strategy pattern here
         if (v == SensorType.LIGHT_SENSOR) {
           sensorStrategy = new LightSensorStrategy();
           try {
-            sd.value = sensorStrategy.GetSensorData(grovePi, k);
+            sd.setValue(sensorStrategy.getSensorData(grovePi, k));
           } catch (IOException e) {
             e.printStackTrace();
           }
@@ -62,17 +61,21 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
       return grovePi.getDigitalIn(port).get() ? 1 : 0;
     } catch (Exception e) {return -999;}
   }
+
+
   //Well behaved methods
   @Override
   public String toString(){
 	  return "AggregatedDataFactory";
   }
+
   @Override
   public int hashCode(){
 	  int hash = 0;
 	  hash += grovePi.hashCode();
 	  return hash;
   }
+
   @Override
   public boolean equals(Object other) {
       if (other == null || !(other instanceof AggregatedDataFactory)) return false;

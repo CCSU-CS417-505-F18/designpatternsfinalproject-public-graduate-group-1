@@ -8,7 +8,7 @@ import java.io.IOException;
 public class LightSensorStrategy implements SensorStrategy {
 
     @Override
-    public double GetSensorData(GrovePi grovePi, int port) throws IOException {
+    public double getSensorData(GrovePi grovePi, int port) throws IOException {
         GroveLightSensor sensor;
         try {
             sensor = new GroveLightSensor(grovePi, port);
@@ -23,10 +23,12 @@ public class LightSensorStrategy implements SensorStrategy {
     public String toString(){
         return "Light Sensor Strategy" ;
     }
+
     @Override
     public int hashCode(){
         return 1;
     }
+    
     @Override
     public boolean equals(Object other) {
         if (other == null || !(other instanceof AggregatedDataFactory)) return false;
