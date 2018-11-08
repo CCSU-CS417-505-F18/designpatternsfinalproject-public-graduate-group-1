@@ -41,19 +41,23 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
           // Strategy is also an object Adapter to GrovePi sensors
           switch (v){
               case LIGHT:
-                  sensorStrategy = new LightSensorStrategy();
-                  break;
               case SOUND:
-                  sensorStrategy = new SoundSensorStrategy();
+                  try {
+                      sensorStrategy = new BasicAnalogSensorStrategy(grovePi, k, v);
+                  }
+                  catch (IOException e)
+                  {
+                      sensorStrategy = null;
+                  }
+                  break;
+              case ROTARY:
+                  sensorStrategy = new RotaryAngleSensorStrategy();
                   break;
               case TEMP:
                   sensorStrategy = new TemperatureSensorStrategy();
                   break;
               case HUMID:
                   sensorStrategy = new HumiditySensorStrategy();
-                  break;
-              case ROTARY:
-                  sensorStrategy = new RotaryAngleSensorStrategy();
                   break;
               case RANGER:
                   sensorStrategy = new UltrasonicRangerSensorStrategy();
