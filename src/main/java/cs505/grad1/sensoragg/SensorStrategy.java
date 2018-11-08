@@ -1,7 +1,6 @@
 package cs505.grad1.sensoragg;
 
 import org.iot.raspberry.grovepi.GrovePi;
-
 import java.io.IOException;
 
 /**
@@ -25,6 +24,6 @@ interface SensorStrategy {
      * @param port is the port into which the sensor is plugged
      * @return SensorAggHashMap is the Map object of the provided sensors with their values
      */
-    double GetSensorData(GrovePi grovePi, int port) throws IOException;
+    double getSensorData(GrovePi grovePi, int port) throws IOException;
 
 }
