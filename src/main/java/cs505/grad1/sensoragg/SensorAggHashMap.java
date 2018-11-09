@@ -17,6 +17,18 @@ import java.util.Map;
  */
 public class SensorAggHashMap extends HashMap<Integer, SensorData> {
 
+    public double getValue(SensorType sensorType)
+    {
+        for (Map.Entry<Integer, SensorData> entry : this.entrySet())
+        {
+            SensorData data = entry.getValue();
+            if (data.getSensorType() == sensorType)
+                return data.getValue();
+        }
+        //TODO: Throw sensor not included exception?
+        return -999;
+    }
+
     //WELL-BEHAVED METHODS
     public String toString() {
         String str = "";
