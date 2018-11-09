@@ -1,6 +1,7 @@
 package cs505.grad1.sensoragg;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -17,16 +18,36 @@ import java.util.Map;
  */
 public class SensorAggHashMap extends HashMap<Integer, SensorData> {
 
+    private DataIterator iterator;
+
     public double getValue(SensorType sensorType)
     {
-        for (Map.Entry<Integer, SensorData> entry : this.entrySet())
+        //USING CUSTOM ITERATOR
+        do
         {
-            SensorData data = entry.getValue();
+            SensorData data = getIterator().next().getValue();
             if (data.getSensorType() == sensorType)
                 return data.getValue();
         }
+        while(getIterator().hasNext());
+
+        //USING JAVA ITERATOR
+//        for (Map.Entry<Integer, SensorData> entry : this.entrySet())
+//        {
+//            SensorData data = entry.getValue();
+//            if (data.getSensorType() == sensorType)
+//                return data.getValue();
+//        }
         //TODO: Throw sensor not included exception?
         return -999;
+    }
+
+    private DataIterator getIterator (){
+        if (iterator == null)
+        {
+            iterator = new DataIterator(this);
+        }
+        return iterator;
     }
 
     //WELL-BEHAVED METHODS
@@ -63,5 +84,30 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
             return false;
         }
         return true;
+    }
+
+    private class DataIterator implements Iterator<Entry<Integer, SensorData>> {
+
+        Entry<Integer, SensorData>[] entryArray;
+        int currentPosition = 0;
+
+        DataIterator(SensorAggHashMap sag)
+        {
+            entryArray = sag.entrySet().toArray(new Entry[0]);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentPosition < entryArray.length;
+        }
+
+        @Override
+        public Entry<Integer, SensorData> next() {
+            if (hasNext())
+            {
+                return entryArray[currentPosition++];
+            }
+            return null;
+        }
     }
 }
