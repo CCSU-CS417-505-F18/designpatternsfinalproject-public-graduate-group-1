@@ -15,7 +15,12 @@ public class Main {
     Thread.sleep(1000);
     led.set(false);
     Grad1Component sag = new Grad1Component(grovePi);
-    sag.addSensor(3, SensorType.LIGHT).addSensor(4, SensorType.LIGHT);
+    sag.addSensor(1, SensorType.LIGHT);
+    sag.addSensor(0, SensorType.ROTARY);
+    sag.addSensor(4, SensorType.RANGER);
+    sag.addSensor(3, SensorType.TEMP);
+    //sag.addSensor(3, SensorType.HUMID);
+    sag.addSensor(2, SensorType.SOUND);
     System.out.println(sag.getAllSensorData());
     System.exit(0);
   }
