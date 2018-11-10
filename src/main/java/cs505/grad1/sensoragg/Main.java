@@ -21,7 +21,7 @@ public class Main {
     sag.addSensor(0, SensorType.ROTARY);
     sag.addSensor(4, SensorType.RANGER);
     sag.addSensor(3, SensorType.TEMP);
-    //sag.addSensor(3, SensorType.HUMID);
+    sag.addSensor(3, SensorType.HUMID);
     sag.addSensor(2, SensorType.SOUND);
     System.out.println(sag.getAllSensorData());
     System.exit(0);
