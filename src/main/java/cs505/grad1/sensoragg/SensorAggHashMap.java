@@ -22,27 +22,28 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
 
     public double getValue(SensorType sensorType)
     {
-        //USING CUSTOM ITERATOR
-        do
-        {
-            SensorData data = getIterator().next().getValue();
-            if (data.getSensorType() == sensorType)
-                return data.getValue();
-        }
-        while(getIterator().hasNext());
+      //  USING CUSTOM ITERATOR
+        // SensorData data;
+        // do
+        // {
+        //     data = getIterator().next().getValue();
+        //     if (data.getSensorType() == sensorType)
+        //         return data.getValue();
+        // }
+        // while(getIterator().hasNext());
 
         //USING JAVA ITERATOR
-//        for (Map.Entry<Integer, SensorData> entry : this.entrySet())
-//        {
-//            SensorData data = entry.getValue();
-//            if (data.getSensorType() == sensorType)
-//                return data.getValue();
-//        }
+       for (Map.Entry<Integer, SensorData> entry : this.entrySet())
+       {
+           SensorData data = entry.getValue();
+           if (data.getSensorType() == sensorType)
+               return data.getValue();
+       }
         //TODO: Throw sensor not included exception?
         return -999;
     }
 
-    private DataIterator getIterator (){
+    private DataIterator getIterator() {
         if (iterator == null)
         {
             iterator = new DataIterator(this);
@@ -86,9 +87,9 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
         return true;
     }
 
-    private class DataIterator implements Iterator<Entry<Integer, SensorData>> {
+    private class DataIterator  implements Iterator<Entry<Integer, SensorData>> {
 
-        Entry<Integer, SensorData>[] entryArray;
+        Map.Entry<Integer, SensorData>[] entryArray;
         int currentPosition = 0;
 
         DataIterator(SensorAggHashMap sag)

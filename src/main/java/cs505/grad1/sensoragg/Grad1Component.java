@@ -23,7 +23,7 @@ public class Grad1Component {
 	static final int digitalOffset = 32;
     static final int secondarySensorOffset = 16;
 
-	Grad1Component(GrovePi grovePi) {
+	public Grad1Component(GrovePi grovePi) {
 		factory = new AggregatedDataFactory(grovePi);
 	}
 
