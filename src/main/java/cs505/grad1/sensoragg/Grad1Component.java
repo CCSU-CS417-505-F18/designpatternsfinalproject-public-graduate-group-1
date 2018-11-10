@@ -58,7 +58,7 @@ public class Grad1Component {
 	 * @return Map<Integer, SensorData> is a map of ports and SensorData that
 	 * can be accessed
 	 */
-	public Map<Integer, SensorData> getAllSensorData() {
+	public SensorAggregateHashMap getAllSensorData() {
 		return factory.makeAggregatedData(sensors);
 	}
 
