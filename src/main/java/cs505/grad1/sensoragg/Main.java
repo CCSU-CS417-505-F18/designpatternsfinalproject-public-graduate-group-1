@@ -9,6 +9,8 @@ public class Main {
   public static void main(String[] args) throws Exception {
     GrovePi grovePi = new GrovePi4J();
     //your stuff here
+    //test light sensor
+    //test 
     int pin = 4;
     GroveLed led = new GroveLed(grovePi, pin);
     led.set(true);
