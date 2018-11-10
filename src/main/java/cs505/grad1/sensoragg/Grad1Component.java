@@ -21,7 +21,7 @@ public class Grad1Component {
 
 	//sensor port offsets to avoid HashMap collisions
 	static final int digitalOffset = 32;
-    static final int secondarySensorOffset = 16;
+  static final int secondarySensorOffset = 16;
 
 	public Grad1Component(GrovePi grovePi) {
 		factory = new AggregatedDataFactory(grovePi);
