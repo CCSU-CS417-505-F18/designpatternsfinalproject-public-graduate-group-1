@@ -3,7 +3,6 @@ package cs505.grad1.sensoragg;
 import java.util.HashMap;
 import java.util.Map;
 import org.iot.raspberry.grovepi.GrovePi;
-
 /**
  * Grad1Component is a public class used to create a list of sensors and start
  * the factory process.
@@ -23,8 +22,12 @@ public class Grad1Component {
 	static final int digitalOffset = 32;
   static final int secondarySensorOffset = 16;
 
-	public Grad1Component(GrovePi grovePi) {
-		factory = new AggregatedDataFactory(grovePi);
+	public Grad1Component(MockGrovePi grovepi) {
+			factory = new MockFactory(grovepi);
+	};
+
+	public Grad1Component(GrovePi grovepi) {
+		factory = new AggregatedDataFactory(grovepi);
 	}
 
 	/**

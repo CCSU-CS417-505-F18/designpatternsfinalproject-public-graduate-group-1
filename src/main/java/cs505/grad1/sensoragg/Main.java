@@ -4,18 +4,15 @@ import org.iot.raspberry.grovepi.GrovePi;
 import org.iot.raspberry.grovepi.devices.GroveLed;
 import org.iot.raspberry.grovepi.pi4j.GrovePi4J;
 
+
 public class Main {
 
   public static void main(String[] args) throws Exception {
-    GrovePi grovePi = new GrovePi4J();
+    MockGrovePi grovePi = new MockGrovePi();
     //your stuff here
     //test light sensor
-    //test 
+    //test
     int pin = 4;
-    GroveLed led = new GroveLed(grovePi, pin);
-    led.set(true);
-    Thread.sleep(1000);
-    led.set(false);
     Grad1Component sag = new Grad1Component(grovePi);
     sag.addSensor(1, SensorType.LIGHT);
     sag.addSensor(0, SensorType.ROTARY);
