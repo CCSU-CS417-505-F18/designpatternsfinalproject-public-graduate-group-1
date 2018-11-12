@@ -13,7 +13,7 @@ import java.util.Map;
  * @author Kathleen McKay
  * @author Phil Murray
  */
-interface AbstractAggregatedDataFactory {
+public interface AbstractAggregatedDataFactory {
 
 	/**
 	 * MakeAggregatedData is a method to generate the sensor data based on a map

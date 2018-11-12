@@ -76,8 +76,6 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
       return sagHash;
   }
 
-<<<<<<< HEAD
-=======
   //reflection implementation method
   protected Number digital(int port) {
     try {
@@ -86,7 +84,6 @@ public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
   }
 
 
->>>>>>> 9ce1be2f71a129142f8bf3602c1ef39fcc950755
   //Well behaved methods
   @Override
   public String toString(){

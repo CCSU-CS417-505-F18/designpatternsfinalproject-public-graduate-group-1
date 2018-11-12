@@ -15,7 +15,7 @@ public class SensorData {
 
 	private SensorType type;
 	private int port;
-	private Number value;
+	private double value;
 
 	SensorData(SensorType type, int port) {
 		this.type = type;
@@ -39,11 +39,11 @@ public class SensorData {
 		this.port = port;
 	}
 
-	public Number getValue() {
+	public double getValue() {
 		return this.value;
 	}
 
-	public void setValue(Number value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 

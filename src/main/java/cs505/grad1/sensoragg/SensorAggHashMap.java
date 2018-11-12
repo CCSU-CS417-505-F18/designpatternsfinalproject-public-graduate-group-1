@@ -1,14 +1,12 @@
 package cs505.grad1.sensoragg;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
- * SensorAggHashMap is a map implementation to gather and relay
- * sensor data. Each key represents a connected port, and the
- * value is the associated SensorData. Functionality is as a normal
- * Map in Java.
- *
+ * SensorAggHashMap is the main data structure associated with the Grad1Component.
+ * It is a {@link Map} of {@link Integer} keys to {@link SensorData} values.
  * @version 1.0.0
  * @author Colin Kelly
  * @author Ben Marshalkowski
@@ -17,7 +15,39 @@ import java.util.Map;
  */
 public class SensorAggHashMap extends HashMap<Integer, SensorData> {
 
+    private DataIterator iterator;
+
+    public double getValue(SensorType sensorType) {
+        SensorData data;
+        do
+        {
+            data = getIterator().next().getValue();
+            if (data.getSensorType() == sensorType)
+                return data.getValue();
+        }
+        while(getIterator().hasNext());
+
+        //USING JAVA ITERATOR
+       // for (Map.Entry<Integer, SensorData> entry : this.entrySet())
+       // {
+       //     SensorData data = entry.getValue();
+       //     if (data.getSensorType() == sensorType)
+       //         return data.getValue();
+       // }
+        //TODO: Throw sensor not included exception?
+        return -999;
+    }
+
+    private DataIterator getIterator() {
+        if (iterator == null)
+        {
+            iterator = new DataIterator(this);
+        }
+        return iterator;
+    }
+
     //WELL-BEHAVED METHODS
+    @Override
     public String toString() {
         String str = "";
         for (Map.Entry<Integer, SensorData> entry : this.entrySet()) {
@@ -40,8 +70,7 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
     }
 
     @Override
-    public boolean equals(Object other)
-    {
+    public boolean equals(Object other) {
         if (other == null || !(other instanceof SensorAggHashMap)) return false;
         if (other == this) return true;
 
@@ -51,5 +80,30 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
             return false;
         }
         return true;
+    }
+
+    private class DataIterator implements Iterator<Entry<Integer, SensorData>> {
+
+        Map.Entry<Integer, SensorData>[] entryArray;
+        int currentPosition = 0;
+
+        DataIterator(SensorAggHashMap sag)
+        {
+            entryArray = sag.entrySet().toArray(new Entry[0]);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentPosition < entryArray.length;
+        }
+
+        @Override
+        public Entry<Integer, SensorData> next() {
+            if (hasNext())
+            {
+                return entryArray[currentPosition++];
+            }
+            return null;
+        }
     }
 }
