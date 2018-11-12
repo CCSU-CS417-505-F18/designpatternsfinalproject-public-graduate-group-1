@@ -50,7 +50,7 @@ System.out.println(sah);
 double currentTemp = sah.getValue(SensorType.TEMP);
 
 // foreach over the entire collection of sensors
-for (Map.Entry<Integer, SensorData> entry : foo.entrySet()) {
+for (Map.Entry<Integer, SensorData> entry : sah.entrySet()) {
   System.out.println(entry.getKey() + " --> " + entry.getValue());
 }
 ```
