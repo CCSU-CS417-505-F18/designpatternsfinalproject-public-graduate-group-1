@@ -1,5 +1,5 @@
 # CS505 Graduate Students - Group 1: Final Project Component
-The `Grad1Component` provides Java developers building Raspberry Pi applications using Grove Pi sensors with an easy way to access all sensor input data at once.
+The `Grad1Component` provides Java developers building Raspberry Pi/Grove Pi applications with an easy way to access all sensor input data at once.
 
 ## Authors
 * **Colin Kelly**
@@ -14,7 +14,7 @@ JDK 8.0 or greater
 Prior to using the `Grad1Component`, you must know which sensors on your RPi are associated with which ports. `Grad1Component` only supports the standard Grove Pi sensors listed below:
 
   * SOUND, //Grove - Sound sensor
-  * LIGHT, //Grove - Green LED
+  * LIGHT, //Grove - Light sensor
   * ROTARY, //Grove - Rotary angle sensor
   * HUMIDITY, //Grove - Temperature and humidity sensor
   * TEMPERATURE, //Grove - Temperature and humidity sensor
@@ -43,5 +43,14 @@ SensorAggHashMap sah = (SensorAggHashMap) component.getAllSensorData();
 ```
 This `SensorAggHashMap` can be pretty printed, iterated over, etc.
 ```java
-System.out.println(sah)
+// invoke the toString() method on the SensorAggHashMap
+System.out.println(sah);
+
+// get the value of a specific sensor.
+double currentTemp = sah.getValue(SensorType.TEMP);
+
+// foreach over the entire collection of sensors
+for (Map.Entry<Integer, SensorData> entry : foo.entrySet()) {
+  System.out.println(entry.getKey() + " --> " + entry.getValue());
+}
 ```
