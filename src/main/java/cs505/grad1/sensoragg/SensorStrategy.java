@@ -22,7 +22,7 @@ interface SensorStrategy {
      *
      * @param grovePi is the GrovePi object representing the physical card
      * @param port is the port into which the sensor is plugged
-     * @return SensorAggHashMap is the Map object of the provided sensors with their values
+     * @return the current value of the sensor, provided as a double
      */
     double getSensorData(GrovePi grovePi, int port) throws IOException;
 

@@ -5,8 +5,25 @@ import org.iot.raspberry.grovepi.GrovePi;
 
 import java.io.IOException;
 
+/**
+ * The TemperatureSensorStrategy acts as an adapter between
+ * the component and the Grove Pi temperature sensor.
+ *
+ * @version 1.0.0
+ * @author Colin Kelly
+ * @author Ben Marshalkowski
+ * @author Kathleen McKay
+ * @author Phil Murray
+ */
 class TemperatureSensorStrategy implements SensorStrategy {
 
+    /**
+     * GetSensorData will return the sensor's current value as a double.
+     *
+     * @param grovePi is the GrovePi object representing the physical card
+     * @param port is the port into which the sensor is plugged
+     * @return the current value of the sensor, provided as a double
+     */
     @Override
     public double getSensorData(GrovePi grovePi, int port) throws IOException {
         GroveTemperatureAndHumiditySensor sensor;

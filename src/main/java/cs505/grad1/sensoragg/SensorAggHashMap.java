@@ -17,6 +17,13 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
 
     private DataIterator iterator;
 
+    /**
+     * getValue will iterate over each entry in the SensorAggHashMap to find an entry of the
+     * matching type. It will then return the value in that entry as a double.
+     *
+     * @param sensorType is the SensorType enum reflecting the type of sensor that is being viewed
+     * @return the value detected by the sensor, represented as a double
+     */
     public double getValue(SensorType sensorType) {
         SensorData data;
         do
@@ -38,6 +45,11 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
         return -999;
     }
 
+    /**
+     * getIterator will access this instance's iterator object, or create one if none exists
+     *
+     * @return the iterator for this instance, as a DataIterator
+     */
     private DataIterator getIterator() {
         if (iterator == null)
         {
@@ -74,8 +86,8 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
         if (other == null || !(other instanceof SensorAggHashMap)) return false;
         if (other == this) return true;
 
-        Grad1Component gOther = (Grad1Component)other;
-        if ((!gOther.toString().equals(toString())))
+        SensorAggHashMap sOther = (SensorAggHashMap) other;
+        if ((!sOther.toString().equals(toString())))
         {
             return false;
         }
@@ -92,11 +104,21 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
             entryArray = sag.entrySet().toArray(new Entry[0]);
         }
 
+        /**
+         * hasNext confirms if there are additional entries past the iterator's current position
+         *
+         * @return a boolean if there are additional entries remaining
+         */
         @Override
         public boolean hasNext() {
             return currentPosition < entryArray.length;
         }
 
+        /**
+         * next returns the next entry in the hashmap, if one exists, and increments the current position
+         *
+         * @return the next entry in the hash map, as Entry<Integer, SensorData>
+         */
         @Override
         public Entry<Integer, SensorData> next() {
             if (hasNext())
@@ -104,6 +126,36 @@ public class SensorAggHashMap extends HashMap<Integer, SensorData> {
                 return entryArray[currentPosition++];
             }
             return null;
+        }
+
+        //WELL-BEHAVED METHODS
+        @Override
+        public String toString() {
+            String str = "Aggregated Data Iterator, Size " + entryArray.length;
+            return str;
+        }
+
+        @Override
+        public int hashCode() {
+            int hash = 0;
+            if (entryArray != null)
+            {
+                hash += entryArray.length;
+            }
+            return hash;
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            if (other == null || !(other instanceof DataIterator)) return false;
+            if (other == this) return true;
+
+            DataIterator dOther = (DataIterator)other;
+            if ((dOther.hashCode() != hashCode()))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

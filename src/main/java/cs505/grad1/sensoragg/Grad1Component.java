@@ -19,9 +19,14 @@ public class Grad1Component {
 	private Map<Integer, SensorType> sensors = new HashMap<Integer, SensorType>();
 	private AbstractAggregatedDataFactory factory;
 
-	//sensor port offsets to avoid HashMap collisions
+	/**
+	 * Port offset to avoid HashMap collisions between analog and digital ports
+	 */
 	static final int digitalOffset = 32;
-  static final int secondarySensorOffset = 16;
+	/**
+	 * Port offset to avoid HashMap collisions between a sensors which share a port
+	 */
+  	static final int secondarySensorOffset = 16;
 
 	public Grad1Component(MockGrovePi grovepi) {
 			factory = new MockFactory(grovepi);
