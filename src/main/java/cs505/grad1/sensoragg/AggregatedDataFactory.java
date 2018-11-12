@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Kathleen McKay
  * @author Phil Murray
  */
-public class AggregatedDataFactory implements AbstractAggregatedDataFactory {
+class AggregatedDataFactory implements AbstractAggregatedDataFactory {
 
   private GrovePi grovePi;
   private SensorStrategy sensorStrategy;

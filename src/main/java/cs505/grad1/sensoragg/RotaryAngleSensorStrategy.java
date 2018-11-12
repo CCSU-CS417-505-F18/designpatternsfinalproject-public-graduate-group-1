@@ -5,7 +5,7 @@ import org.iot.raspberry.grovepi.GrovePi;
 
 import java.io.IOException;
 
-public class RotaryAngleSensorStrategy implements SensorStrategy {
+class RotaryAngleSensorStrategy implements SensorStrategy {
 
     @Override
     public double getSensorData(GrovePi grovePi, int port) throws IOException {

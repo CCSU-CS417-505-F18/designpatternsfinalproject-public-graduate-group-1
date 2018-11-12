@@ -5,7 +5,7 @@ import org.iot.raspberry.grovepi.GrovePi;
 
 import java.io.IOException;
 
-public class UltrasonicRangerSensorStrategy implements SensorStrategy {
+class UltrasonicRangerSensorStrategy implements SensorStrategy {
 
     @Override
     public double getSensorData(GrovePi grovePi, int port) throws IOException {

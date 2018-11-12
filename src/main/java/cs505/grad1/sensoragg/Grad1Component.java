@@ -3,6 +3,7 @@ package cs505.grad1.sensoragg;
 import java.util.HashMap;
 import java.util.Map;
 import org.iot.raspberry.grovepi.GrovePi;
+import cs505.grad1.sensoragg.mock.*;
 /**
  * Grad1Component is a public class used to create a list of sensors and start
  * the factory process.

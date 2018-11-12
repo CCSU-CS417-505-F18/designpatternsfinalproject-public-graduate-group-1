@@ -1,4 +1,4 @@
-package cs505.grad1.sensoragg;
+package cs505.grad1.sensoragg.mock;
 
 import java.io.IOException;
 

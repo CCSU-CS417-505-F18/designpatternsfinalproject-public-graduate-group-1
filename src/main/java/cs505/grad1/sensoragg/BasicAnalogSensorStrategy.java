@@ -3,12 +3,11 @@ package cs505.grad1.sensoragg;
 import org.iot.raspberry.grovepi.GrovePi;
 import org.iot.raspberry.grovepi.devices.GroveAnalogInputDevice;
 import org.iot.raspberry.grovepi.devices.GroveLightSensor;
-import org.iot.raspberry.grovepi.devices.GroveRotarySensor;
 import org.iot.raspberry.grovepi.devices.GroveSoundSensor;
 
 import java.io.IOException;
 
-public class BasicAnalogSensorStrategy implements SensorStrategy {
+class BasicAnalogSensorStrategy implements SensorStrategy {
 
     private GroveAnalogInputDevice<Double> sensor;
 

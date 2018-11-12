@@ -5,7 +5,7 @@ import org.iot.raspberry.grovepi.GrovePi;
 
 import java.io.IOException;
 
-public class HumiditySensorStrategy implements SensorStrategy {
+class HumiditySensorStrategy implements SensorStrategy {
 
     @Override
     public double getSensorData(GrovePi grovePi, int port) throws IOException {

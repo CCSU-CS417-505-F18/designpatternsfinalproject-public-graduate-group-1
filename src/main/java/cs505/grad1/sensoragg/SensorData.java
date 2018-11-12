@@ -17,7 +17,7 @@ public class SensorData {
 	private int port;
 	private double value;
 
-	SensorData(SensorType type, int port) {
+	public SensorData(SensorType type, int port) {
 		this.type = type;
 		this.port = port;
 	}

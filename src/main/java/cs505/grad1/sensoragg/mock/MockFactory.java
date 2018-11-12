@@ -1,7 +1,8 @@
-package cs505.grad1.sensoragg;
+package cs505.grad1.sensoragg.mock;
 
 import java.util.Map;
 import java.io.IOException;
+import cs505.grad1.sensoragg.*;
 
 
 public class MockFactory implements AbstractAggregatedDataFactory {
@@ -9,7 +10,7 @@ public class MockFactory implements AbstractAggregatedDataFactory {
   private MockSensorStrategy sensorStrategy;
   private MockGrovePi grovePi;
 
-  MockFactory(MockGrovePi grovePi) {
+  public MockFactory(MockGrovePi grovePi) {
     this.grovePi = grovePi;
   }
 
