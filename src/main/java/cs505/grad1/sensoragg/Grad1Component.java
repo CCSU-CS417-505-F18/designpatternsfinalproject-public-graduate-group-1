@@ -3,7 +3,7 @@ package cs505.grad1.sensoragg;
 import java.util.HashMap;
 import java.util.Map;
 import org.iot.raspberry.grovepi.GrovePi;
-
+import cs505.grad1.sensoragg.mock.*;
 /**
  * Grad1Component is a public class used to create a list of sensors and start
  * the factory process.
@@ -19,8 +19,21 @@ public class Grad1Component {
 	private Map<Integer, SensorType> sensors = new HashMap<Integer, SensorType>();
 	private AbstractAggregatedDataFactory factory;
 
-	Grad1Component(GrovePi grovePi) {
-		factory = new AggregatedDataFactory(grovePi);
+	/**
+	 * Port offset to avoid HashMap collisions between analog and digital ports
+	 */
+	static final int digitalOffset = 32;
+	/**
+	 * Port offset to avoid HashMap collisions between a sensors which share a port
+	 */
+  	static final int secondarySensorOffset = 16;
+
+	public Grad1Component(MockGrovePi grovepi) {
+			factory = new MockFactory(grovepi);
+	};
+
+	public Grad1Component(GrovePi grovepi) {
+		factory = new AggregatedDataFactory(grovepi);
 	}
 
 	/**
@@ -33,6 +46,16 @@ public class Grad1Component {
 	 * sensor at the specified port
 	 */
 	public Grad1Component addSensor(int port, SensorType type) {
+		//apply offset for digital sensors
+		if (type == SensorType.HUMID || type == SensorType.TEMP || type == SensorType.RANGER)
+		{
+			port += digitalOffset;
+		}
+		//apply offset for secondary value of common port
+		if (type == SensorType.HUMID)
+		{
+			port += secondarySensorOffset;
+		}
 		sensors.put(port, type);
 		return this;
 	}

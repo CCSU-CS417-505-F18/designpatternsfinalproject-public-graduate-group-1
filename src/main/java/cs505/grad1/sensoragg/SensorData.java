@@ -13,9 +13,40 @@ package cs505.grad1.sensoragg;
  */
 public class SensorData {
 
-	public SensorType type;
-	public int port;
-	public Number value;
+	private SensorType type;
+	private int port;
+	private double value;
+
+	public SensorData(SensorType type, int port) {
+		this.type = type;
+		this.port = port;
+	}
+
+	// getters and setters
+	public SensorType getSensorType() {
+		return this.type;
+	}
+
+	public void setSensorType(SensorType type) {
+		this.type = type;
+	}
+
+	public int getPort() {
+		return this.port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	public double getValue() {
+		return this.value;
+	}
+
+	public void setValue(double value) {
+		this.value = value;
+	}
+
 
 	//WELL-BEHAVED METHODS
 	@Override
