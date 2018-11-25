@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.iot.raspberry.grovepi.GrovePi;
 import cs505.grad1.sensoragg.mock.*;
+
 /**
  * Grad1Component is a public class used to create a list of sensors and start
  * the factory process.
@@ -16,24 +17,69 @@ import cs505.grad1.sensoragg.mock.*;
  */
 public class Grad1Component {
 
-	private Map<Integer, SensorType> sensors = new HashMap<Integer, SensorType>();
+	private Map<Integer, SensorType> sensors = new HashMap();
 	private AbstractAggregatedDataFactory factory;
 
 	/**
 	 * Port offset to avoid HashMap collisions between analog and digital ports
 	 */
 	static final int digitalOffset = 32;
+
 	/**
 	 * Port offset to avoid HashMap collisions between a sensors which share a port
 	 */
-  	static final int secondarySensorOffset = 16;
+	static final int secondarySensorOffset = 16;
 
-	public Grad1Component(MockGrovePi grovepi) {
-			factory = new MockFactory(grovepi);
+	public Grad1Component(MockGrovePi mock) {
+			this.sensors = new HashMap<Integer, SensorType>();
+			this.factory = new MockFactory(mock);
 	};
 
 	public Grad1Component(GrovePi grovepi) {
-		factory = new AggregatedDataFactory(grovepi);
+			this.sensors = new HashMap<Integer, SensorType>();
+			this.factory = new AggregatedDataFactory(grovepi);
+	}
+
+	public Grad1Component(Builder builder) {
+			this.sensors = builder.sensors;
+			if (builder.grovePi != null)
+				this.factory = new AggregatedDataFactory(builder.grovePi);
+			else
+				this.factory = new MockFactory(builder.mock);
+	}
+
+	public static class Builder {
+			private Map<Integer, SensorType> sensors = new HashMap();
+			private GrovePi grovePi;
+			private MockGrovePi mock;
+
+			public Builder sensor(int port, SensorType type) {
+				// Duplicate code here from outer class's addSensor method.
+				// Necessary because using the builder is optional. No way to refactor.
+				if (type == SensorType.HUMID || type == SensorType.TEMP || type == SensorType.RANGER)
+					port += digitalOffset;
+				if (type == SensorType.HUMID)
+					port += secondarySensorOffset;
+				this.sensors.put(port, type);
+				return this;
+			}
+
+			public Builder grovePi(GrovePi grovePi) {
+				if (this.mock != null) // can't use a mock and a real grovePi at same time
+					throw new IllegalStateException();
+				return this;
+			}
+
+			public Builder mock(MockGrovePi mock) {
+				if (this.grovePi != null) // can't use a mock and a real grovePi at same time
+					throw new IllegalStateException();
+				this.mock = mock;
+				return this;
+			}
+
+			public Grad1Component build() {
+				return new Grad1Component(this);
+			}
 	}
 
 	/**
@@ -115,5 +161,4 @@ public class Grad1Component {
 		}
 		return true;
 	}
-
 }
