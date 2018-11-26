@@ -20,7 +20,8 @@ public interface AbstractAggregatedDataFactory {
 	 * of ports and sensor types
 	 *
 	 * @param sensors is a Map of every active port (int) and
-	 * the sensor SensorType at that port
+	 * the sensor SensorType at that port.
+	 * @return Map
 	 */
 	Map<Integer, SensorData> makeAggregatedData(Map<Integer, SensorType> sensors);
 
