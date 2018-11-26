@@ -31,12 +31,10 @@ public class Grad1Component {
 	static final int secondarySensorOffset = 16;
 
 	public Grad1Component(MockGrovePi mock) {
-			this.sensors = new HashMap<Integer, SensorType>();
 			this.factory = new MockFactory(mock);
 	};
 
 	public Grad1Component(GrovePi grovepi) {
-			this.sensors = new HashMap<Integer, SensorType>();
 			this.factory = new AggregatedDataFactory(grovepi);
 	}
 
@@ -48,6 +46,13 @@ public class Grad1Component {
 				this.factory = new MockFactory(builder.mock);
 	}
 
+	/**
+	 * Inner class for BUILDER PATTERN. Rather than instantiating a {@link Grad1Component} object using a
+	 * constructor and then adding on the various
+	 * sensors using the user can "build" the
+	 * Grad1Component with the help of this inner class. For example:
+	 * Grad1Component grad1 = new Grad1Component.Builder().sensor(1, SensorType.LIGHT).sensor(2, SensorType.RANGER).grovePi(new GrovePi4J).build();
+	 */
 	public static class Builder {
 			private Map<Integer, SensorType> sensors = new HashMap();
 			private GrovePi grovePi;
@@ -90,6 +95,7 @@ public class Grad1Component {
 	 * @param port is an int for the port the sensor is at
 	 * @param type is a {@link cs505.grad1.sensoragg.SensorType} for the type of
 	 * sensor at the specified port
+	 * @return {@link Grad1Component}
 	 */
 	public Grad1Component addSensor(int port, SensorType type) {
 		//apply offset for digital sensors
