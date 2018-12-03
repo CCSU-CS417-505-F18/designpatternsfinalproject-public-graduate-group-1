@@ -72,6 +72,7 @@ public class Grad1Component {
 			public Builder grovePi(GrovePi grovePi) {
 				if (this.mock != null) // can't use a mock and a real grovePi at same time
 					throw new IllegalStateException();
+				this.grovePi = grovePi;
 				return this;
 			}
 
