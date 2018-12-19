@@ -1,0 +1,40 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cs505.grad1.sensoragg</groupId>
+  <artifactId>sensor-aggregator</artifactId>
+  <version>1</version>
+
+  <!-- <repositories>
+  	<repository>
+  		<id>oss-snapshots-repo</id>
+  		<name>Sonatype OSS Maven Repository</name>
+  		<url>https://oss.sonatype.org/content/groups/public</url>
+  		<snapshots>
+  			<enabled>true</enabled>
+  			<updatePolicy>always</updatePolicy>
+  		</snapshots>
+  	</repository>
+  </repositories> -->
+  <dependencies>
+    <dependency>
+        <groupId>com.pi4j</groupId>
+        <artifactId>pi4j-core</artifactId>
+        <version>1.2-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.iot.raspberry</groupId>
+      <artifactId>GrovePi-spec</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.iot.raspberry</groupId>
+      <artifactId>GrovePi-pi4j</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+  <properties>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+
+</project>
